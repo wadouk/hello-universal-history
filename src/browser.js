@@ -6,7 +6,10 @@ const history = createBrowserHistory();
 
 const router = new Router([
     { path: '/poi/:id', action: () => 'Page Two' },
-    { path: '/', action: () => 'home' },
+    { path: '/', action: () => require('./search') },
+    { path: '/results/address/:address', action: () => 'home' },
+    { path: '/results/category/:category', action: () => 'home' },
+    { path: '/results/app/:app', action: () => 'home' },
 ])
 
 function a(event) {
