@@ -1,16 +1,33 @@
 import createBrowserHistory from 'history/createBrowserHistory'
-import Router from 'universal-router';
+import Search from "./search"
+import routes from './routes'
+import Geoentity from './geoentity'
+
+let search = new Search()
+
+const app  = {
+    home: () => {
+        search.render()
+        document.querySelector("#app").innerHTML = ""
+        document.querySelector("#geoentity").innerHTML = ""
+        document.querySelector("#app").appendChild(search.el)
+        return true
+    },
+    search: () => {
+        return true
+    },
+    showGeoentity: (id) => {
+        const geoentity = new Geoentity()
+        geoentity.render({id: id})
+        document.querySelector("#geoentity").innerHTML = ""
+        document.querySelector("#geoentity").appendChild(geoentity.el)
+        return true
+    }
+}
 
 const history = createBrowserHistory();
 
-
-const router = new Router([
-    { path: '/poi/:id', action: () => 'Page Two' },
-    { path: '/', action: () => require('./search') },
-    { path: '/results/address/:address', action: () => 'home' },
-    { path: '/results/category/:category', action: () => 'home' },
-    { path: '/results/app/:app', action: () => 'home' },
-])
+const router = routes(app)
 
 function a(event) {
     if (event.target.tagName === 'A' && event.target.getAttribute('href')) {
@@ -22,16 +39,14 @@ function a(event) {
 }
 
 window.addEventListener('load', () => {
-    history.listen(rout)
-
-    function rout() {
-        router.resolve(history.location).catch((e) => {
-            window.location = '/'
-        }).then((result) => {
-            document.querySelector("#app").innerHTML = result
+    function resolve() {
+        router.resolve(history.location).then(() => {
+            console.log("route changed")
         })
     }
-    rout()
+
+    history.listen(resolve)
+    resolve()
 
     document.querySelector("body").addEventListener('click', a)
 })

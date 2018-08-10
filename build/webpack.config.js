@@ -4,5 +4,14 @@ module.exports = {
     entry: path.join(process.cwd(), 'src/browser.js'),
     devtool: 'source-map',
     watch: true,
-    mode: 'development'
+    mode: 'development',
+    module: {
+        rules: [{
+            test: /\.twig$/,
+            use: ['twig-loader']
+        }]
+    },
+    node: {
+        fs: 'empty' // for twig-loader
+    }
 };

@@ -1,12 +1,20 @@
 import Backbone from 'backbone'
+import Addresses from './addresses'
 
-module.exports = Backbone.View({
-    id: 'search',
-    template: require('search.html'),
-    events :{
-        'click #trouve': 'trouve'
+export default Backbone.View.extend({
+    template: require('./search.html.twig'),
+    initialize: function () {
     },
-    trouve: (e) => {
-        e.target.value
+    events :{
+        'click #trouve': 'results'
+    },
+    results: function () {
+        this.addresses = new Addresses({el: "#addresses"})
+        this.addresses.render()
+        return Promise.resolve()
+    },
+    render: function() {
+        this.$el.append(this.template.render())
+        return this
     }
 })
