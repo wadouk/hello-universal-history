@@ -2,8 +2,8 @@ import Router from "universal-router"
 
 export default (app) => {
     return new Router([
-        { name: 'geoentity', path: '/geoentity/:id', action: (context, {id}) => app.showGeoentity(id) },
+        { name: 'geoentity', path: '/geoentity/:id', action: (context, params) => app.showGeoentity(params) },
         { path: '/', action: () => app.home()},
-        { path: '/addresses/', action: () => app.search() },
+        { name: 'addresses', path: '/addresses', action: () => app.search() },
     ])
 }

@@ -4,8 +4,13 @@
   "main": "src/server.mjs",
   "browser": "src/broeser.js",
   "scripts": {
-    "start": "node .",
+    "start": "node --experimental-modules .",
     "bundle": "webpack --config build/webpack.config.js"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "mjs": "node --experimental-modules ."
+    }
   },
   "keywords": [],
   "author": "",
