@@ -1,5 +1,5 @@
 import Backbone from 'backbone'
-import state from './state'
+import state from '../state'
 
 export default Backbone.View.extend({
     template: require('./search.html.twig'),
@@ -9,7 +9,7 @@ export default Backbone.View.extend({
         'click #find': 'results'
     },
     results: function (e) {
-        state.set('find', e.target.value)
+        state.setFind(e.target.value)
         e.stopPropagation()
     },
     render: function() {

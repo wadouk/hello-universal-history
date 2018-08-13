@@ -1,6 +1,6 @@
 import Backbone from 'backbone'
-import Search from './Search'
-import Addresses from './Addresses'
+import Search from '../search/Search'
+import Addresses from '../addresses/Addresses'
 
 export default Backbone.View.extend({
     el: "#left",

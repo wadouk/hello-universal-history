@@ -1,5 +1,5 @@
 import Backbone from 'backbone'
-import GeoEntity from './GeoEntity'
+import GeoEntity from '../geoentity/GeoEntity'
 
 export default Backbone.View.extend({
     el: "#middle",

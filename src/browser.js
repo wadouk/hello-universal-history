@@ -1,9 +1,9 @@
 import createBrowserHistory from 'history/createBrowserHistory'
-import Left from "./Left"
-import Middle from "./Middle"
+import Left from "./zones/Left"
+import Middle from "./zones/Middle"
 import routes from './routes'
 import state from './state'
-import generateUrls from 'universal-router/generateUrls'
+import generateUrls from "universal-router/generateUrls"
 
 const history = createBrowserHistory();
 
@@ -12,7 +12,7 @@ function a(event) {
         event.preventDefault()
         history.push(event.target.getAttribute('href'))
     } else {
-        console.log('fail')
+        console.log('stopPropagation not invoked on ', event.target)
     }
 }
 
@@ -50,12 +50,7 @@ window.addEventListener('load', () => {
     const router = routes(app)
     const url = generateUrls(router)
 
-    state.on('change:geoEntityId', function (model, id) {
-        history.push(url('geoentity', {id : id}))
-    })
-    state.on('change:find', function () {
-        history.push(url('addresses'))
-    })
+    state.register(url, history)
 
     history.listen(resolve)
     resolve()

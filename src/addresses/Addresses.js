@@ -1,5 +1,5 @@
 import Backbone from 'backbone'
-import state from './state'
+import state from '../state'
 
 export default Backbone.View.extend({
     template: require('./addresses.html.twig'),
@@ -7,7 +7,7 @@ export default Backbone.View.extend({
         'click li': 'openGeoentity'
     },
     openGeoentity: function (e) {
-        state.set('geoEntityId', e.target.dataset.id)
+        state.setGeoEntityId(e.target.dataset.id)
         e.stopPropagation()
     },
     render: function() {
