@@ -1,6 +1,7 @@
 import createBrowserHistory from 'history/createBrowserHistory'
 import Left from "./zones/Left"
 import Middle from "./zones/Middle"
+import Map from "./zones/Map"
 import routes from './routes'
 import state from './state'
 import generateUrls from "universal-router/generateUrls"
@@ -19,6 +20,7 @@ function a(event) {
 window.addEventListener('load', () => {
     const left = new Left()
     const middle = new Middle()
+    const map = new Map()
 
     const app  = {
         home: () => {
@@ -43,6 +45,9 @@ window.addEventListener('load', () => {
 
     function resolve() {
         router.resolve(history.location).then(() => {
+            if (window.history.state && window.history.state.state) {
+                map.setCenter(window.history.state.state)
+            }
             console.log("route changed")
         })
     }
