@@ -24,5 +24,10 @@ export default Backbone.View.extend({
             label: 'ho'
         }]}))
         return this
+    },
+    remove: function () {
+        Backbone.View.prototype.remove.call(this)
+        state.unset('geoEntityId', {silent: true})
+        state.unset('center', {silent: true})
     }
 })

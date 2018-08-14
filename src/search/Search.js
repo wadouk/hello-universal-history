@@ -15,5 +15,9 @@ export default Backbone.View.extend({
     render: function() {
         this.$el.html(this.template.render())
         return this
+    },
+    remove: function () {
+        Backbone.View.prototype.remove.call(this)
+        state.unset("find", {silent: true})
     }
 })
