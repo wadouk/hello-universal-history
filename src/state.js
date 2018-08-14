@@ -10,7 +10,7 @@ state.register = (url, history) => {
     })
     state.on('change:center', (model, center) => {
         if (center) {
-            history.replace(`#${center.lat}/${center.lng}`, center)
+            history.replace(`#lat=${center.lat}&lng=${center.lng}&zoom=${center.zoom}`, center)
         }
     })
 }
@@ -20,7 +20,7 @@ state.setGeoEntityId = (id) => {
     state.unset('center')
 }
 state.setCenter = (center) => {
-    state.set('center', center)
+    state.set('center', {lat: +parseFloat(center.lat).toFixed(6), lng: +parseFloat(center.lng).toFixed(6), zoom: center.zoom})
 }
 state.setFind = function(find) {
     state.set('find', find)

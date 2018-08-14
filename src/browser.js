@@ -18,10 +18,6 @@ function a(event) {
 }
 
 window.addEventListener('load', () => {
-    const left = new Left()
-    const middle = new Middle()
-    const map = new Map()
-
     const app  = {
         home: () => {
             left.displaySearch()
@@ -61,4 +57,8 @@ window.addEventListener('load', () => {
     resolve()
 
     document.querySelector("body").addEventListener('click', a)
+
+    const left = new Left()
+    const middle = new Middle()
+    const map = new Map()
 })

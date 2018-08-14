@@ -8,7 +8,7 @@ export default Backbone.View.extend({
     },
     openGeoentity: function (e) {
         state.setGeoEntityId(e.target.dataset.id)
-        state.setCenter({lat: e.target.dataset.lat, lng: e.target.dataset.lng})
+        state.setCenter({lat: e.target.dataset.lat, lng: e.target.dataset.lng, zoom: 15})
         e.stopPropagation()
     },
     render: function() {
