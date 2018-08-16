@@ -1,9 +1,8 @@
 import Backbone from 'backbone'
 import state from '../state'
-require('leaflet')
+import L from 'leaflet'
 
 export default Backbone.View.extend({
-    el: '#right',
     initialize: function () {
         this.map = L.map("map").setView([51.505, -0.09], 13)
         this.registerCenter()

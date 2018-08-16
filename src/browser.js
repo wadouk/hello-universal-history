@@ -1,7 +1,7 @@
 import createBrowserHistory from 'history/createBrowserHistory'
 import Left from "./zones/Left"
 import Middle from "./zones/Middle"
-import Map from "./zones/Map"
+import Map from "./zones/Right"
 import routes from './routes'
 import state from './state'
 import generateUrls from "universal-router/generateUrls"
@@ -60,5 +60,5 @@ window.addEventListener('load', () => {
 
     const left = new Left()
     const middle = new Middle()
-    const map = new Map()
+    const map = new Map().views.map
 })
